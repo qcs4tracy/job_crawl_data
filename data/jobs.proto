@@ -1,0 +1,51 @@
+
+syntax = "proto3";
+
+option java_package = "ex.grpc";
+option objc_class_prefix = "RTG";
+
+package jobs;
+
+message SearchOptions {
+  int32 offset = 1;
+  int32 resultLimit = 2;
+}
+
+message JobInfo {
+  // JobId
+  int32 id_icims = 1;
+  // Business category
+  string business_category = 2;
+  // Which team
+  string team_category = 3;
+  // description
+  string description = 4;
+  // title
+  string title = 5;
+  // basic qualification
+  string basic_qualifications = 6;
+  // **  posted date **
+  string feed_date = 7;
+  string preferred_qualifications = 8;
+  string url_next_step = 9;
+  string company_name = 10;
+  string job_category = 11;
+  string primary_search_label = 12;
+  string description_short = 13;
+  string time_ago = 14;
+  string location = 15;
+  int32 timestamp = 16;
+}
+
+message Void {}
+
+message Int {
+  int32 number = 1;
+}
+
+// Interface exported by the server.
+service JobsService {
+  //get the stream of job records given search options
+  rpc GetJobs (SearchOptions) returns (stream JobInfo);
+  rpc GetCount (Void) returns (Int);
+}

@@ -1,0 +1,11 @@
+#!/usr/local/Cellar/python/2.7.10_2/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
+
+# -*- coding: utf-8 -*-
+import re
+import sys
+
+from scrapy.cmdline import execute
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(execute())
